@@ -27,6 +27,7 @@ public class HelloApplication extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Hello JavaFX!");
+                label.setText("Hello JavaFX!");
             }
         });
         label = new Label();
