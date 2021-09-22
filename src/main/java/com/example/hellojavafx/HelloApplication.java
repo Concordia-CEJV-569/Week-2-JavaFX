@@ -7,33 +7,38 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HelloApplication extends Application {
     private Label label;
-    private Label label2;
+    private TextField nameTextField;
 
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Hello JavaFX");
+
         Button button = new Button();
         button.setText("Click Me!");
+
+        label = new Label();
+        label.setText("This is my label");
+
+        nameTextField = new TextField();
+        nameTextField.setPromptText("Enter your name");
+
         button.setOnAction(new EventHandler<ActionEvent>() {
             // Challenge: change the label's text on click of this button
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Hello JavaFX!");
-                label.setText("Hello JavaFX!");
+                String name = nameTextField.getText().trim();
+                label.setText(name);
+                button.setText("Don't click again!");
             }
         });
-        label = new Label();
-        label.setText("This is my label");
-        label2 = new Label();
-        label2.setText("Label 2");
 
         // StackPane stackPane = new StackPane();
         FlowPane rootFlowPane = new FlowPane(10, 10);
@@ -41,7 +46,7 @@ public class HelloApplication extends Application {
 
         rootFlowPane.getChildren().add(button);
         rootFlowPane.getChildren().add(label);
-        rootFlowPane.getChildren().add(label2);
+        rootFlowPane.getChildren().add(nameTextField);
 
         Scene scene = new Scene(rootFlowPane, 250, 200);
         stage.setScene(scene);
