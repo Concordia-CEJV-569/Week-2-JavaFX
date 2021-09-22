@@ -23,6 +23,7 @@ public class HelloApplication extends Application {
         Button button = new Button();
         button.setText("Click Me!");
         button.setOnAction(new EventHandler<ActionEvent>() {
+            // Challenge: change the label's text on click of this button
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Hello JavaFX!");
